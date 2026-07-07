@@ -5,7 +5,7 @@
 <h1 align="center">SnakeRush</h1>
 
 <p align="center">
-  A neon arcade snake game with combo scoring, power food, dynamic obstacles, and synth-style browser audio.
+  A neon arcade snake game with multiple modes, difficulty tuning, combo scoring, power food, local leaderboards, swipe controls, and synth-style browser audio.
 </p>
 
 <p align="center">
@@ -24,10 +24,12 @@
 ## Why It Stands Out
 
 - Fast browser play with no install, build step, or dependencies.
+- Five modes: Classic, Rush, Portal, Wall, and Zen.
+- Three difficulty levels with separate local leaderboards.
 - Polished neon interface with animated canvas rendering and responsive controls.
 - Combo-based scoring that rewards clean movement and aggressive food chasing.
-- Special food types, slow-time effects, particle bursts, and growing obstacles.
-- Keyboard, touch, and on-screen direction controls for desktop and mobile.
+- Special food types, slow-time effects, double-score windows, poison risk, particle bursts, and growing obstacles.
+- Keyboard, swipe, touch, and on-screen direction controls for desktop and mobile.
 - Lightweight synth sound effects and adaptive background music.
 
 ## Play
@@ -45,6 +47,8 @@ Or run locally by opening `index.html` in your browser.
 | Action | Keyboard | Touch / Mouse |
 | --- | --- | --- |
 | Move | Arrow keys or WASD | Direction pad |
+| Swipe move | - | Swipe on the board |
+| Boost | Shift | Boost button |
 | Start | Enter or Space | Start button |
 | Pause | Enter or Space | Pause button |
 | Restart | Restart button | Restart button |

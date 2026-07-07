@@ -8,12 +8,17 @@
   --magenta: #ff4fd8;
   --lime: #95ff66;
   --gold: #ffd166;
+  --violet: #b985ff;
   --danger: #ff5d4d;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  background: #070814;
 }
 
 body {
@@ -29,6 +34,7 @@ body {
     repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 6px),
     linear-gradient(135deg, rgba(95, 230, 255, 0.16), transparent 28%),
     linear-gradient(225deg, rgba(255, 79, 216, 0.14), transparent 30%),
+    radial-gradient(circle at 78% 20%, rgba(149, 255, 102, 0.1), transparent 28%),
     linear-gradient(180deg, #070814 0%, #11182c 48%, #090711 100%);
   overflow-x: hidden;
 }
@@ -55,7 +61,7 @@ button {
 }
 
 .game-shell {
-  width: min(94vw, 780px);
+  width: min(94vw, 1180px);
   min-height: 100vh;
   margin: 0 auto;
   padding: 22px 0;
@@ -66,14 +72,16 @@ button {
 
 .hud {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
 }
 
 .hud > div,
 .control-bar,
 .stage,
-.dpad .direction {
+.dpad .direction,
+.run-card,
+.menu-section {
   background: var(--panel);
   border: 1px solid var(--line);
   box-shadow:
@@ -104,7 +112,7 @@ button {
   margin: 0 0 4px;
   color: var(--muted);
   font-size: 0.76rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .hud strong {
@@ -122,6 +130,7 @@ button {
   overflow: hidden;
   border-radius: 8px;
   box-shadow: var(--shadow), 0 0 34px rgba(255, 79, 216, 0.18);
+  touch-action: none;
 }
 
 .stage::before {
@@ -150,23 +159,38 @@ canvas {
   inset: 0;
   z-index: 2;
   display: none;
-  place-items: center;
-  align-content: center;
-  gap: 16px;
+  overflow: auto;
+  padding: clamp(14px, 3vw, 28px);
   text-align: center;
-  padding: 24px;
-  background: rgba(5, 8, 18, 0.72);
+  background: rgba(5, 8, 18, 0.78);
   backdrop-filter: blur(8px);
 }
 
 .overlay.is-visible {
   display: grid;
+  place-items: center;
+}
+
+.overlay-content {
+  width: min(100%, 760px);
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--cyan);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .overlay h1 {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(3rem, 13vw, 6.6rem);
+  font-size: clamp(3rem, 12vw, 6.4rem);
   line-height: 0.92;
   letter-spacing: 0;
   text-shadow:
@@ -175,10 +199,149 @@ canvas {
 }
 
 .overlay p {
-  min-height: 1.6em;
   margin: 0;
   color: var(--muted);
-  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-size: clamp(0.95rem, 2.4vw, 1.15rem);
+}
+
+.menu-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.menu-section {
+  min-width: 0;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.menu-heading,
+.run-card > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-heading {
+  margin-bottom: 9px;
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.menu-heading small,
+.run-card span {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.segmented.compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.segmented button {
+  min-height: 38px;
+  padding: 0 8px;
+  border-radius: 8px;
+  color: var(--muted);
+  background: rgba(7, 16, 31, 0.76);
+  border: 1px solid rgba(95, 230, 255, 0.18);
+  font-size: 0.82rem;
+  font-weight: 900;
+  transition:
+    transform 130ms ease,
+    border-color 130ms ease,
+    background 130ms ease,
+    color 130ms ease;
+}
+
+.segmented button.is-selected {
+  color: #07101b;
+  background: linear-gradient(135deg, var(--cyan), var(--lime));
+  border-color: rgba(149, 255, 102, 0.8);
+}
+
+.food-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.food-list span {
+  min-width: 0;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.food-list i {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--food);
+  box-shadow: 0 0 12px var(--food);
+}
+
+.leaderboard {
+  min-height: 94px;
+  margin: 0;
+  padding-left: 24px;
+  text-align: left;
+}
+
+.leaderboard li {
+  margin: 3px 0;
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.leaderboard .empty {
+  list-style: none;
+  margin-left: -24px;
+  color: var(--muted);
+}
+
+.summary {
+  width: 100%;
+  display: none;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.summary.is-visible {
+  display: grid;
+}
+
+.summary span {
+  min-height: 54px;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--muted);
+  background: rgba(7, 16, 31, 0.74);
+  border: 1px solid rgba(95, 230, 255, 0.18);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.summary strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--ink);
+  font-size: 1.18rem;
 }
 
 .primary-button,
@@ -194,11 +357,17 @@ canvas {
 }
 
 .primary-button {
-  min-width: 150px;
-  padding: 0 26px;
+  min-width: 170px;
+  padding: 0 28px;
   color: #07101b;
   background: linear-gradient(135deg, var(--cyan), var(--lime));
   box-shadow: 0 0 22px rgba(95, 230, 255, 0.36);
+}
+
+.side-panel {
+  display: grid;
+  gap: 14px;
+  align-content: start;
 }
 
 .control-bar {
@@ -206,7 +375,7 @@ canvas {
   padding: 9px;
   border-radius: 8px;
   display: grid;
-  grid-template-columns: 1fr 1fr 56px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -215,6 +384,12 @@ canvas {
   background: var(--panel-strong);
   color: var(--ink);
   border: 1px solid rgba(95, 230, 255, 0.2);
+}
+
+.boost-button.is-active {
+  color: #07101b;
+  background: linear-gradient(135deg, var(--gold), var(--magenta));
+  border-color: rgba(255, 209, 102, 0.7);
 }
 
 .sound-button {
@@ -227,10 +402,42 @@ canvas {
   border-color: rgba(255, 93, 77, 0.6);
 }
 
+.run-card {
+  min-height: 172px;
+  padding: 12px;
+  border-radius: 8px;
+  display: grid;
+  gap: 10px;
+}
+
+.run-card strong {
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.meter {
+  width: 100%;
+  height: 9px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(95, 230, 255, 0.18);
+}
+
+.meter i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--cyan), var(--lime), var(--gold));
+  box-shadow: 0 0 12px rgba(95, 230, 255, 0.6);
+}
+
 .primary-button:hover,
 .tool-button:hover,
 .sound-button:hover,
-.direction:hover {
+.direction:hover,
+.segmented button:hover {
   transform: translateY(-1px);
   filter: brightness(1.08);
   box-shadow: 0 0 24px rgba(255, 79, 216, 0.22);
@@ -239,7 +446,8 @@ canvas {
 .primary-button:active,
 .tool-button:active,
 .sound-button:active,
-.direction:active {
+.direction:active,
+.segmented button:active {
   transform: translateY(1px) scale(0.98);
 }
 
@@ -284,14 +492,12 @@ canvas {
   grid-row: 3;
 }
 
-@media (min-width: 780px) {
+@media (min-width: 840px) {
   .game-shell {
-    grid-template-columns: 1fr 170px;
+    grid-template-columns: minmax(0, 1fr) 255px;
     grid-template-areas:
       "hud hud"
-      "stage controls"
-      "stage dpad";
-    align-content: center;
+      "stage side";
   }
 
   .hud {
@@ -302,16 +508,23 @@ canvas {
     grid-area: stage;
   }
 
-  .control-bar {
-    grid-area: controls;
+  .side-panel {
+    grid-area: side;
+  }
+}
+
+@media (max-width: 720px) {
+  .menu-grid,
+  .summary {
     grid-template-columns: 1fr;
-    align-content: start;
   }
 
-  .dpad {
-    grid-area: dpad;
-    width: 170px;
-    align-self: start;
+  .food-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .segmented {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -333,5 +546,27 @@ canvas {
 
   .label {
     font-size: 0.72rem;
+  }
+
+  .overlay {
+    padding: 12px;
+  }
+
+  .overlay h1 {
+    font-size: clamp(2.6rem, 15vw, 4.4rem);
+  }
+
+  .menu-section {
+    padding: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
   }
 }
