@@ -1,0 +1,106 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">SnakeRush neon arcade cover</title>
+  <desc id="desc">A neon arcade game cover showing a glowing snake, grid board, score panels, and colorful power food.</desc>
+  <defs>
+    <linearGradient id="bg" x1="54" y1="32" x2="1080" y2="608" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071524"/>
+      <stop offset="0.52" stop-color="#141026"/>
+      <stop offset="1" stop-color="#05070F"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="297" y1="83" x2="861" y2="189" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5FE6FF"/>
+      <stop offset="0.48" stop-color="#95FF66"/>
+      <stop offset="1" stop-color="#FF4FD8"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="180" y1="219" x2="1032" y2="545" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1222"/>
+      <stop offset="1" stop-color="#080A17"/>
+    </linearGradient>
+    <filter id="glowCyan" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#5FE6FF" flood-opacity="0.72"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="24" flood-color="#5FE6FF" flood-opacity="0.32"/>
+    </filter>
+    <filter id="glowPink" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#FF4FD8" flood-opacity="0.82"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="24" flood-color="#FF4FD8" flood-opacity="0.34"/>
+    </filter>
+    <filter id="glowLime" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="11" flood-color="#95FF66" flood-opacity="0.8"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="26" flood-color="#95FF66" flood-opacity="0.34"/>
+    </filter>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M 34 0 L 0 0 0 34" stroke="#5FE6FF" stroke-opacity="0.16" stroke-width="1"/>
+    </pattern>
+    <pattern id="scan" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M0 1H8" stroke="white" stroke-opacity="0.045"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.85"/>
+  <path d="M0 120C180 151 279 74 464 126C651 178 714 258 913 208C1068 168 1128 218 1200 252" stroke="#FF4FD8" stroke-opacity="0.22" stroke-width="3"/>
+  <path d="M0 504C169 457 309 511 472 468C650 420 801 364 998 414C1086 437 1146 421 1200 400" stroke="#5FE6FF" stroke-opacity="0.18" stroke-width="3"/>
+
+  <g opacity="0.92">
+    <rect x="74" y="69" width="196" height="88" rx="18" fill="#091020" stroke="#5FE6FF" stroke-opacity="0.34"/>
+    <text x="104" y="105" fill="#9FB2C8" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">SCORE</text>
+    <text x="104" y="142" fill="#F8FBFF" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="900">2048</text>
+    <path d="M96 148H244" stroke="url(#titleGrad)" stroke-width="3"/>
+  </g>
+
+  <g opacity="0.92">
+    <rect x="930" y="69" width="196" height="88" rx="18" fill="#091020" stroke="#FF4FD8" stroke-opacity="0.34"/>
+    <text x="960" y="105" fill="#9FB2C8" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">COMBO</text>
+    <text x="960" y="142" fill="#F8FBFF" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="900">x8.5</text>
+    <path d="M952 148H1100" stroke="url(#titleGrad)" stroke-width="3"/>
+  </g>
+
+  <text x="600" y="118" text-anchor="middle" fill="url(#titleGrad)" font-family="Segoe UI, Arial Black, Arial, sans-serif" font-size="92" font-weight="900" letter-spacing="2" filter="url(#glowCyan)">SnakeRush</text>
+  <text x="600" y="162" text-anchor="middle" fill="#D7E8FF" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="700">Neon snake. Combo chase. Arcade speed.</text>
+
+  <rect x="150" y="206" width="900" height="356" rx="28" fill="url(#panel)" stroke="#5FE6FF" stroke-opacity="0.42" stroke-width="2"/>
+  <rect x="172" y="228" width="856" height="312" rx="18" fill="#050915" stroke="#FFD166" stroke-opacity="0.35"/>
+  <rect x="172" y="228" width="856" height="312" rx="18" fill="url(#grid)" opacity="0.9"/>
+  <rect x="172" y="228" width="856" height="312" rx="18" fill="url(#scan)"/>
+
+  <g filter="url(#glowLime)">
+    <rect x="444" y="355" width="38" height="38" rx="11" fill="#95FF66"/>
+    <rect x="489" y="355" width="38" height="38" rx="11" fill="#5FFFE0"/>
+    <rect x="534" y="355" width="38" height="38" rx="11" fill="#E8FFF9"/>
+    <circle cx="546" cy="368" r="4.7" fill="#07101F"/>
+    <circle cx="562" cy="380" r="4.7" fill="#07101F"/>
+  </g>
+
+  <g filter="url(#glowPink)">
+    <circle cx="703" cy="314" r="18" fill="#FF4FD8"/>
+    <circle cx="703" cy="314" r="8" fill="#FFD7F7"/>
+    <circle cx="698" cy="309" r="3" fill="#FFFFFF"/>
+  </g>
+
+  <g filter="url(#glowCyan)">
+    <circle cx="812" cy="445" r="18" fill="#5FE6FF"/>
+    <path d="M812 431L818 445H806L812 431Z" fill="#07101F"/>
+  </g>
+
+  <g filter="url(#glowLime)" opacity="0.92">
+    <rect x="610" y="436" width="34" height="34" rx="8" fill="#95FF66"/>
+    <rect x="649" y="436" width="34" height="34" rx="8" fill="#95FF66"/>
+    <rect x="688" y="436" width="34" height="34" rx="8" fill="#95FF66"/>
+    <rect x="727" y="436" width="34" height="34" rx="8" fill="#E8FFF9"/>
+    <circle cx="738" cy="448" r="4" fill="#07101F"/>
+    <circle cx="752" cy="458" r="4" fill="#07101F"/>
+  </g>
+
+  <g opacity="0.9">
+    <rect x="278" y="482" width="126" height="44" rx="12" fill="#0A1222" stroke="#5FE6FF" stroke-opacity="0.45"/>
+    <text x="341" y="512" text-anchor="middle" fill="#5FE6FF" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="800">Power Food</text>
+    <rect x="425" y="482" width="150" height="44" rx="12" fill="#0A1222" stroke="#95FF66" stroke-opacity="0.45"/>
+    <text x="500" y="512" text-anchor="middle" fill="#95FF66" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="800">Combo Score</text>
+    <rect x="596" y="482" width="158" height="44" rx="12" fill="#0A1222" stroke="#FF4FD8" stroke-opacity="0.45"/>
+    <text x="675" y="512" text-anchor="middle" fill="#FF4FD8" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="800">Neon Canvas</text>
+    <rect x="775" y="482" width="146" height="44" rx="12" fill="#0A1222" stroke="#FFD166" stroke-opacity="0.45"/>
+    <text x="848" y="512" text-anchor="middle" fill="#FFD166" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="800">No Build</text>
+  </g>
+
+  <text x="600" y="598" text-anchor="middle" fill="#9FB2C8" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">heroineoy.github.io/SnakeRush</text>
+</svg>
